@@ -15,8 +15,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CCL.Security;
 using DAL;
 using DAL.Entity;
+using CCL.Security.Identify;
 using MySql.Data.MySqlClient;
 
 namespace PopulationApp
@@ -31,15 +33,14 @@ namespace PopulationApp
             InitializeComponent();
             Region ABC = new Region();
             AAA.Text = ABC.Name;
-            Locality BBB = new Locality();
-            District CCC = new District();
+            User BBB = new Admin();
+            User CCC = new Analyst();
+            User DDD = new Interviewer();
 
 
             using (DBContext db = new DBContext())
-            {
-                //db.regions.AddRange(ABC);
-                //db.localitys.AddRange(BBB);
-                db.districts.AddRange(CCC);
+            {;
+                db.users.AddRange(BBB,CCC,DDD);
                 db.SaveChanges();
             }
         }
