@@ -31,7 +31,7 @@ namespace PopulationApp
         public MainWindow()
         {
             InitializeComponent();
-            Region ABC = new Region();
+            /*Region ABC = new Region();
             AAA.Text = ABC.Name;
             User BBB = new Admin();
             User CCC = new Analyst();
@@ -39,10 +39,39 @@ namespace PopulationApp
 
 
             using (DBContext db = new DBContext())
-            {;
+            {
                 db.users.AddRange(BBB,CCC,DDD);
                 db.SaveChanges();
+            }*/
+        }
+
+        private void SingInButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Login.Text != "Login" && Password.Text != "Password")
+            {
+                string login = Login.Text;
+                string password = Password.Text;
+                using (DBContext db = new DBContext())
+                {
+                    ValueTask<User> ThisUser = db.users.FindAsync(login);
+                    User thisUser = ThisUser.Result;
+                    if (thisUser.Password == password)
+                    {
+                        AAA.Text = "Ви авторизувалися як: " + thisUser.UserName;
+                    }
+                    else
+                    {
+                        AAA.Text = "Задано невірний логін або пароль";
+                    }
+                    
+                    //AAA.Text = thisUser.ToString();
+                }
             }
+            else
+            {
+                AAA.Text = "Задано невірний логін або пароль";
+            }
+            //throw new NotImplementedException();
         }
     }
 }
