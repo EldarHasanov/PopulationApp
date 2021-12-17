@@ -55,9 +55,18 @@ namespace PopulationApp
                 {
                     ValueTask<User> ThisUser = db.users.FindAsync(login);
                     User thisUser = ThisUser.Result;
-                    if (thisUser.Password == password)
+                    //int hash = String.GetHashCode(Password.Text);
+                    Hash encr = new Hash();
+                    int hash = encr.GetFNV1aHashCode(Password.Text);
+                    if (thisUser.Password == hash.ToString())
                     {
-                        AAA.Text = "Ви авторизувалися як: " + thisUser.UserName;
+                        //AAA.Text = "Ви авторизувалися як: " + thisUser.UserName;
+                        if (thisUser.AccessLevel == 1)
+                        {
+                            AdminWindow adminWindow = new AdminWindow(thisUser);
+                            this.Close();
+                            adminWindow.Show();
+                        }
                     }
                     else
                     {

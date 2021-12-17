@@ -24,5 +24,13 @@ namespace CCL.Security
             Email = email;
             AccessLevel = accessLevel;
         }
+
+        public User()
+        {
+            UserName = "userName";
+            Password = "password";
+            Email = "email";
+            AccessLevel = 2;
+        }
     }
 }
