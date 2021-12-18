@@ -51,5 +51,14 @@ namespace ViewModel
         {
             return Name;
         }
+
+        public string GetPassword()
+        {
+            return AutentificatedUser.Password;
+        }
+        public string GetEmail()
+        {
+            return AutentificatedUser.Email;
+        }
     }
 }

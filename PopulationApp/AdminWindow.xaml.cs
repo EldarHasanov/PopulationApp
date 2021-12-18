@@ -33,32 +33,30 @@ namespace PopulationApp
 
         private void SingUpButton_Click(object sender, RoutedEventArgs e)
         {
-            using (DBContext db = new DBContext())
+            uint accLev;
+            if ((bool)RBAdmin.IsChecked)
             {
-                if (db.users.FindAsync(Email.Text).Result == null)
-                {
-                    newUser.Email = Email.Text;
-                    Hash encr = new Hash();
-                    int hash = encr.GetFNV1aHashCode(Password.Text);
-                    newUser.Password = hash.ToString();
-                    newUser.UserName = UserName.Text;
-                    if ((bool) RBAdmin.IsChecked)
-                    {
-                        newUser.AccessLevel = 1;
-                    }
-                    else if ((bool) RBAnalitic.IsChecked)
-                    {
-                        newUser.AccessLevel = 2;
-                    }
-                    else
-                    {
-                        newUser.AccessLevel = 3;
-                    }
-
-                    db.AddRange(newUser);
-                    db.SaveChanges();
-                }
+                accLev = 1;
             }
+            else if ((bool)RBAnalitic.IsChecked)
+            {
+                accLev = 2;
+            }
+            else
+            {
+                accLev = 3;
+            }
+
+            try
+            {
+                Registration register = new Registration(Email.Text, Password.Text, UserName.Text, accLev);
+                register.addUserToDataBase();
+            }
+            catch (ExistExeption exception)
+            {
+                AAA.Text = exception.Message;
+            }
+            
         }
 
         private void Button_Click_Exsit(object sender, RoutedEventArgs e)
