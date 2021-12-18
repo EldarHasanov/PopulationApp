@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CCL.Security;
 using DAL;
+using ViewModel;
 
 namespace PopulationApp
 {
@@ -23,10 +24,10 @@ namespace PopulationApp
     {
 
         User newUser;
-        public AdminWindow(User thisUser)
+        public AdminWindow(Autentification thisUser)
         {
             InitializeComponent();
-            AAA.Text = "Ви авторизувалися як: " + thisUser.UserName;
+            AAA.Text = "Ви авторизувалися як: " + thisUser.GetName();
             newUser = new User();
         }
 
@@ -58,6 +59,13 @@ namespace PopulationApp
                     db.SaveChanges();
                 }
             }
+        }
+
+        private void Button_Click_Exsit(object sender, RoutedEventArgs e)
+        {
+            MainWindow neWindow = new MainWindow();
+            this.Close();
+            neWindow.Show();
         }
     }
 }

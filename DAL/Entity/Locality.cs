@@ -29,7 +29,7 @@ namespace DAL.Entity
         public uint FinishedSecondaryEducation { get; set; }
         public uint AverageEducation { get; set; }
         public double AverageEducationPer { get; set; }
-        public uint Region { get; set; }
+        public uint RegionId { get; set; }
 
         public Locality(uint localityId, string name, uint men, uint woman, double averageAge,
             uint finishedSecondaryEducation, uint averageEducation, double averageEducationPer, uint regionId)
@@ -42,7 +42,7 @@ namespace DAL.Entity
             this.AverageAge = averageAge;
             this.AverageEducation = averageEducation;
             this.AverageEducationPer = averageEducationPer;
-            this.Region = regionId;
+            this.RegionId = regionId;
         }
 
         public Locality()
@@ -55,7 +55,7 @@ namespace DAL.Entity
             this.AverageAge = 40.3;
             this.AverageEducation = 2;
             this.AverageEducationPer = 54;
-            this.Region = 1;
+            this.RegionId = 1;
         }
     }
 }

@@ -15,5 +15,6 @@
         <RadioButton Content="Адміністратор" HorizontalAlignment="Left" Margin="350,0,0,0" VerticalAlignment="Center" GroupName="Roles" Name="RBAdmin"/>
         <RadioButton Content="Аналітик" HorizontalAlignment="Left" Margin="665,0,0,0" VerticalAlignment="Center" GroupName="Roles" Name="RBAnalitic"/>
         <RadioButton Content="Інтервьюер" HorizontalAlignment="Left" Margin="508,0,0,0" VerticalAlignment="Center" GroupName="Roles" IsChecked="True" Name="RBInterviw"/>
+        <Button Content="Вийти" HorizontalAlignment="Left" Margin="50,360,0,0" VerticalAlignment="Top" FontSize="20" Click="Button_Click_Exsit"/>
     </Grid>
 </Window>

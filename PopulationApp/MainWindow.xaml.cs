@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +21,7 @@ using DAL;
 using DAL.Entity;
 using CCL.Security.Identify;
 using MySql.Data.MySqlClient;
+using ViewModel;
 
 namespace PopulationApp
 {
@@ -51,30 +53,32 @@ namespace PopulationApp
             {
                 string login = Login.Text;
                 string password = Password.Text;
-                using (DBContext db = new DBContext())
+                User thisUser = new User(login, password);
+                try
                 {
-                    ValueTask<User> ThisUser = db.users.FindAsync(login);
-                    User thisUser = ThisUser.Result;
-                    //int hash = String.GetHashCode(Password.Text);
-                    Hash encr = new Hash();
-                    int hash = encr.GetFNV1aHashCode(Password.Text);
-                    if (thisUser.Password == hash.ToString())
+                    Autentification autentification = new Autentification(thisUser);
+                    if (autentification.GetAccessLevel() == 1)
                     {
-                        //AAA.Text = "Ви авторизувалися як: " + thisUser.UserName;
-                        if (thisUser.AccessLevel == 1)
-                        {
-                            AdminWindow adminWindow = new AdminWindow(thisUser);
-                            this.Close();
-                            adminWindow.Show();
-                        }
+                        AdminWindow adminWindow = new AdminWindow(autentification);
+                        this.Close();
+                        adminWindow.Show();
+                    }
+                    else if (autentification.GetAccessLevel() == 2)
+                    {
+                        AnaliticWindow analiticWindow = new AnaliticWindow(autentification);
+                        this.Close();
+                        analiticWindow.Show();
                     }
                     else
                     {
-                        AAA.Text = "Задано невірний логін або пароль";
+                        
                     }
-                    
-                    //AAA.Text = thisUser.ToString();
                 }
+                catch (AutentificationExeption exception)
+                {
+                    AAA.Text = exception.Message;
+                }
+
             }
             else
             {
