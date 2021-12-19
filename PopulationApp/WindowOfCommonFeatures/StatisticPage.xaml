@@ -1,0 +1,18 @@
+﻿<Page x:Class="PopulationApp.WindowOfCommonFeatures.StatisticPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PopulationApp.WindowOfCommonFeatures"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StatisticPage">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" >
+            <Button Content="Додати новий запис" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Click="Button_Click_Add" Width="250" Margin="10,10,0,0"/>
+            <Button Content="Подивитися статистику" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Click="Button_Click_SeeStatistic" Width="250" Margin="10,10,0,0"/>
+        </StackPanel>
+        <Frame Name="Statistic" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Page>

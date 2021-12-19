@@ -26,27 +26,39 @@ namespace PopulationApp.WindowOfCommonFeatures
         {
             InitializeComponent();
             ThisUser = thisUser;
-            AAA.Text = "Ви хочете змінити пароль користувача";
+            MessageText.Text = "Ви хочете змінити пароль користувача";
         }
 
         private void SingUpButton_Click(object sender, RoutedEventArgs e)
         {
+            
             if (OldPass1.Text == OldPass2.Text && OldPass1.Text != NewPass.Text)
             {
-                ChangePassword changePassword = new ChangePassword(ThisUser, NewPass.Text);
-                try
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Ви збираєтесь змінита пароль користувачу: " + ThisUser.GetName() + " Ви впевнені?", "Зміна паролю", 
+                    System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
                 {
-                    ThisUser = changePassword.Change(OldPass1.Text);
+                    ChangePassword changePassword = new ChangePassword(ThisUser, NewPass.Text);
+                    try
+                    {
+                        ThisUser = changePassword.Change(OldPass1.Text);
+                        MessageText.Text = "Пароль успішно змінено!";
+                    }
+                    catch (ChangePasswordException exception) 
+                    {
+                        MessageText.Text = exception.Message;
+                    }
                 }
-                catch (ChangePasswordException exception)
-                {
-                    AAA.Text = exception.Message;
-                }
-                
+                    
+
+            }
+            else if (OldPass1.Text != OldPass2.Text)
+            {
+                MessageText.Text = "Старі паролі не співпадають.";
             }
             else
             {
-                AAA.Text = "Something wrong";
+                MessageText.Text = "Новий пароль не може бути таким-же як і старий.";
             }
         }
     }

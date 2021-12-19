@@ -67,9 +67,9 @@ namespace PopulationApp
                     }
                     else if (autentification.GetAccessLevel() == 2)
                     {
-                        //AnaliticWindow analiticWindow = new AnaliticWindow(autentification);
-                        //this.Close();
-                        //analiticWindow.Show();
+                        CommonFeatureWindow commonFeatureWindow = new CommonFeatureWindow(autentification);
+                        this.Close();
+                        commonFeatureWindow.Show();
                     }
                     else
                     {

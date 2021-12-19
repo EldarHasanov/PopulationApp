@@ -1,0 +1,21 @@
+﻿<Page x:Class="PopulationApp.WindowOfCommonFeatures.AddingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PopulationApp.WindowOfCommonFeatures"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddingPage">
+
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Margin="350,240,0,0" Text="Email" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="20" Name="Email"/>
+        <TextBox HorizontalAlignment="Left" Margin="350,280,0,0" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="20" Name="Password"/>
+        <TextBox HorizontalAlignment="Left" Margin="350,320,0,0" Text="User name" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="20" Name="UserName" />
+        <Button Content="Додати" HorizontalAlignment="Left" Margin="350,360,0,0" VerticalAlignment="Top" FontSize="20" Width="400" IsDefault="True" Click="AddButton_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="100,75,0,0" Text="Population App" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Name="MessegeBox" Width="600" FontSize="35"/>
+        <ComboBox HorizontalAlignment="Left" Margin="350,240,0,0" VerticalAlignment="Top" Width="400" FontSize="20" Name="Reg" SelectionChanged="Region_SelectionChanged"/>
+        <ComboBox HorizontalAlignment="Left" Margin="350,200,0,0" VerticalAlignment="Top" Width="400" FontSize="20" Name="Type" SelectionChanged="Type_SelectionChanged"/>
+        <ComboBox HorizontalAlignment="Left" Margin="350,280,0,0" VerticalAlignment="Top" Width="400" FontSize="20" Name="Loc" SelectionChanged="Loc_SelectionChanged"/>
+    </Grid>
+</Page>

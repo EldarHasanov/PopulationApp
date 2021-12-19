@@ -34,17 +34,26 @@ namespace PopulationApp.WindowOfCommonFeatures
             {
                 Main.Content = new AdminPage(ThisUser);
             }
+            else if (ThisUser.GetAccessLevel() == 2)
+            {
+                Main.Content = new StatisticPage(ThisUser);
+            }
             else
             {
-
+                
             }
         }
 
         private void Button_Click_Exsit(object sender, RoutedEventArgs e)
         {
-            MainWindow neWindow = new MainWindow();
-            this.Close();
-            neWindow.Show();
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Ви збираєтесь вийти з аккаунту: " + ThisUser.GetName() + " Ви впевнені?", "Підтвердження в",
+                System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                MainWindow neWindow = new MainWindow();
+                this.Close();
+                neWindow.Show();
+            }
         }
 
         private void Button_Click_Change(object sender, RoutedEventArgs e)

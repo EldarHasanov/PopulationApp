@@ -28,20 +28,6 @@ namespace PopulationApp.WindowOfCommonFeatures
             InitializeComponent();
             AAA.Text = "Ви авторизувалися як: " + thisUser.GetName();
             newUser = new User();
-
-            SearchRegionByName sercher = new SearchRegionByName("AAA");
-            AAA.Text = sercher.serchedRegions[0].RegionId + " ; " + sercher.serchedRegions[0].Name + " ; " + sercher.serchedRegions[0].Population;
-
-            ReceiveRegions receive = new ReceiveRegions(0);
-
-            for (int i = 0; i < receive.regionList.Count; i++)
-            {
-                AAA.Text += receive.regionList[i].RegionId + receive.regionList[i].Name +
-                            receive.regionList[i].Population;
-            }
-
-
-
         }
         private void SingUpButton_Click(object sender, RoutedEventArgs e)
         {
@@ -61,8 +47,13 @@ namespace PopulationApp.WindowOfCommonFeatures
 
             try
             {
-                Registration register = new Registration(Email.Text, Password.Text, UserName.Text, accLev);
-                register.addUserToDataBase();
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Ви збираєтесь додати користувача : " + UserName.Text + " Ви впевнені?", "Новий користувач",
+                    System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                    Registration register = new Registration(Email.Text, Password.Text, UserName.Text, accLev);
+                    register.addUserToDataBase();
+                }
             }
             catch (ExistExeption exception)
             {
