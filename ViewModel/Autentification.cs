@@ -60,5 +60,10 @@ namespace ViewModel
         {
             return AutentificatedUser.Email;
         }
+
+        public User GetUser()
+        {
+            return AutentificatedUser;
+        }
     }
 }

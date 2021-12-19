@@ -9,7 +9,7 @@ using PopulationApp;
 
 namespace ViewModel
 {
-    class ChangePassword
+    public class ChangePassword
     {
         private Autentification Auten;
         private string NewPassword;
@@ -20,7 +20,7 @@ namespace ViewModel
             NewPassword = newPassword;
         }
 
-        public void Change(string oldPassword)
+        public Autentification Change(string oldPassword)
         {
             Hash encr = new Hash();
             int hash = encr.GetFNV1aHashCode(oldPassword);
@@ -41,14 +41,18 @@ namespace ViewModel
                         ord.Password = hash.ToString();
                         // Insert any additional changes to column values.
                     }
-                    
+
                     db.SaveChanges();
-                    
+
+                    User tempUser = Auten.GetUser();
+                    tempUser.Password = NewPassword;
+                    return new Autentification(tempUser);
                 }
             }
             else
             {
                 throw new ChangePasswordException("Sommthing wrong with new password");
+                return Auten;
             }
         }
     }

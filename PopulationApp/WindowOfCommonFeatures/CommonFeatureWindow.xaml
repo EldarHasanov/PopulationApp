@@ -1,0 +1,19 @@
+﻿<Window x:Class="PopulationApp.WindowOfCommonFeatures.CommonFeatureWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PopulationApp.WindowOfCommonFeatures"
+        mc:Ignorable="d"
+        Title="CommonFeatureWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal"  >
+            <Button Content="Вийти" HorizontalAlignment="Left" Margin="50,360,0,0" VerticalAlignment="Top" FontSize="20" Click="Button_Click_Exsit" Width="150"/>
+            <Button Content="Змінити пароль" HorizontalAlignment="Left" Margin="-150,320,0,0" VerticalAlignment="Top" FontSize="20" Click="Button_Click_Change" Width="150"/>
+            <Button Content="На головну" HorizontalAlignment="Left" Margin="-150,280,0,0" VerticalAlignment="Top" FontSize="20" Click="Button_Click_Main" Width="150"/>
+        </StackPanel>
+        <Frame Name="Main" NavigationUIVisibility="Hidden">
+
+        </Frame>
+    </Grid>
+</Window>

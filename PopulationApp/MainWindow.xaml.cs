@@ -21,6 +21,7 @@ using DAL;
 using DAL.Entity;
 using CCL.Security.Identify;
 using MySql.Data.MySqlClient;
+using PopulationApp.WindowOfCommonFeatures;
 using ViewModel;
 
 namespace PopulationApp
@@ -46,8 +47,46 @@ namespace PopulationApp
                 db.SaveChanges();
             }*/
             //NavigationService.Navigate(new Page1());
-            this.Content = new Page1();
         }
 
+        private void SingInButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Login.Text != "Login" && Password.Text != "Password")
+            {
+                string login = Login.Text;
+                string password = Password.Text;
+                User thisUser = new User(login, password);
+                try
+                {
+                    Autentification autentification = new Autentification(thisUser);
+                    if (autentification.GetAccessLevel() == 1)
+                    {
+                        CommonFeatureWindow commonFeatureWindow = new CommonFeatureWindow(autentification);
+                        this.Close();
+                        commonFeatureWindow.Show();
+                    }
+                    else if (autentification.GetAccessLevel() == 2)
+                    {
+                        //AnaliticWindow analiticWindow = new AnaliticWindow(autentification);
+                        //this.Close();
+                        //analiticWindow.Show();
+                    }
+                    else
+                    {
+
+                    }
+                }
+                catch (AutentificationExeption exception)
+                {
+                    AAA.Text = exception.Message;
+                }
+
+            }
+            else
+            {
+                AAA.Text = "Задано невірний логін або пароль";
+            }
+            //throw new NotImplementedException();
         }
+    }
 }
