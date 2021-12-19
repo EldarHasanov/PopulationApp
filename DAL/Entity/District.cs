@@ -27,12 +27,13 @@ namespace DAL.Entity
         }
         public double AverageAge { get; set; }
         public uint FinishedSecondaryEducation { get; set; }
+        public uint FinishedProfileEducation { get; set; }
         public uint AverageEducation { get; set; }
         public double AverageEducationPer { get; set; }
-        public uint LocalityId { get; set; }
+        public uint Locality { get; set; }
 
         public District(uint districtId, string name, uint men, uint woman, double averageAge,
-            uint finishedSecondaryEducation, uint averageEducation, double averageEducationPer, uint localityId)
+            uint finishedSecondaryEducation,uint finishedProfileEducation, uint averageEducation, double averageEducationPer, uint locality)
         {
             this.DistrictId = districtId;
             this.Name = name;
@@ -40,9 +41,25 @@ namespace DAL.Entity
             this.Men = men;
             this.Woman = woman;
             this.AverageAge = averageAge;
+            this.FinishedSecondaryEducation = finishedSecondaryEducation;
+            this.FinishedProfileEducation = finishedProfileEducation;
             this.AverageEducation = averageEducation;
             this.AverageEducationPer = averageEducationPer;
-            this.LocalityId = localityId;
+            this.Locality = locality;
+        }
+        public District(string name, uint districtId, uint locality)
+        {
+            this.DistrictId = districtId;
+            this.Name = name;
+            this.Population = 0;
+            this.Men = 0;
+            this.Woman = 0;
+            this.AverageAge = 0;
+            this.FinishedSecondaryEducation = 0;
+            this.FinishedProfileEducation = 0;
+            this.AverageEducation = 1;
+            this.AverageEducationPer = 0;
+            this.Locality = locality;
         }
 
         public District()
@@ -55,7 +72,7 @@ namespace DAL.Entity
             this.AverageAge = 40.3;
             this.AverageEducation = 2;
             this.AverageEducationPer = 54;
-            this.LocalityId = 1;
+            this.Locality = 1;
         }
     }
 }

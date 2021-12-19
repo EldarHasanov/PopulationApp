@@ -28,11 +28,12 @@ namespace DAL
         }
         public double AverageAge { get; set; }
         public uint FinishedSecondaryEducation { get; set; }
+        public uint FinishedProfileEducation { get; set; }
         public uint AverageEducation { get; set; }
         public double AverageEducationPer { get; set; }
 
         public Region(uint regionId, string name, uint men, uint woman, double averageAge,
-            uint finishedSecondaryEducation, uint averageEducation, double averageEducationPer)
+            uint finishedSecondaryEducation, uint finishedProfileEducation, uint averageEducation, double averageEducationPer)
         {
             this.RegionId = regionId;
             this.Name = name;
@@ -40,8 +41,24 @@ namespace DAL
             this.Men = men;
             this.Woman = woman;
             this.AverageAge = averageAge;
+            this.FinishedSecondaryEducation = finishedSecondaryEducation;
+            this.FinishedProfileEducation = finishedProfileEducation;
             this.AverageEducation = averageEducation;
             this.AverageEducationPer = averageEducationPer;
+        }
+
+        public Region(string name, uint regionId)
+        {
+            this.RegionId = regionId;
+            this.Name = name;
+            this.Population = 0;
+            this.Men = 0;
+            this.Woman = 0;
+            this.AverageAge = 0;
+            this.FinishedSecondaryEducation = 0;
+            this.FinishedProfileEducation = 0;
+            this.AverageEducation = 1;
+            this.AverageEducationPer = 0;
         }
 
         public Region()

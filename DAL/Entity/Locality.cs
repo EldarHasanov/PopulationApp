@@ -27,12 +27,13 @@ namespace DAL.Entity
         }
         public double AverageAge { get; set; }
         public uint FinishedSecondaryEducation { get; set; }
+        public uint FinishedProfileEducation { get; set; }
         public uint AverageEducation { get; set; }
         public double AverageEducationPer { get; set; }
-        public uint RegionId { get; set; }
+        public uint Region { get; set; }
 
         public Locality(uint localityId, string name, uint men, uint woman, double averageAge,
-            uint finishedSecondaryEducation, uint averageEducation, double averageEducationPer, uint regionId)
+            uint finishedSecondaryEducation, uint finishedProfileEducation, uint averageEducation, double averageEducationPer, uint region)
         {
             this.LocalityId = localityId;
             this.Name = name;
@@ -40,11 +41,27 @@ namespace DAL.Entity
             this.Men = men;
             this.Woman = woman;
             this.AverageAge = averageAge;
+            this.FinishedSecondaryEducation = finishedSecondaryEducation;
+            this.FinishedProfileEducation = finishedProfileEducation;
             this.AverageEducation = averageEducation;
             this.AverageEducationPer = averageEducationPer;
-            this.RegionId = regionId;
+            this.Region = region;
         }
 
+        public Locality(string name, uint region, uint localityId)
+        {
+            this.LocalityId = localityId;
+            this.Name = name;
+            this.Population = 0;
+            this.Men = 0;
+            this.Woman = 0;
+            this.AverageAge = 0;
+            this.FinishedSecondaryEducation = 0;
+            this.FinishedProfileEducation = 0;
+            this.AverageEducation = 1;
+            this.AverageEducationPer = 0;
+            this.Region = region;
+        }
         public Locality()
         {
             this.LocalityId = 1;
@@ -55,7 +72,7 @@ namespace DAL.Entity
             this.AverageAge = 40.3;
             this.AverageEducation = 2;
             this.AverageEducationPer = 54;
-            this.RegionId = 1;
+            this.Region = 1;
         }
     }
 }

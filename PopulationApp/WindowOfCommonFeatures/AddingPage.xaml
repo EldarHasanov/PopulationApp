@@ -9,9 +9,7 @@
       Title="AddingPage">
 
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="350,240,0,0" Text="Email" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="20" Name="Email"/>
-        <TextBox HorizontalAlignment="Left" Margin="350,280,0,0" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="20" Name="Password"/>
-        <TextBox HorizontalAlignment="Left" Margin="350,320,0,0" Text="User name" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="20" Name="UserName" />
+        <TextBox HorizontalAlignment="Left" Margin="350,320,0,0" Text="Назва територіальної одиниці" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="20" Name="Name" />
         <Button Content="Додати" HorizontalAlignment="Left" Margin="350,360,0,0" VerticalAlignment="Top" FontSize="20" Width="400" IsDefault="True" Click="AddButton_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="100,75,0,0" Text="Population App" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Name="MessegeBox" Width="600" FontSize="35"/>
         <ComboBox HorizontalAlignment="Left" Margin="350,240,0,0" VerticalAlignment="Top" Width="400" FontSize="20" Name="Reg" SelectionChanged="Region_SelectionChanged"/>

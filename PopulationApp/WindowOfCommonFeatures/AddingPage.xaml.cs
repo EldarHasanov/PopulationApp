@@ -22,6 +22,7 @@ namespace PopulationApp.WindowOfCommonFeatures
     public partial class AddingPage : Page
     {
         private Autentification ThisUser;
+        private ReceiveLocalitys receiveLoc;
         public AddingPage(Autentification thisUser)
         {
             InitializeComponent();
@@ -33,27 +34,67 @@ namespace PopulationApp.WindowOfCommonFeatures
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            switch (Type.SelectedIndex)
+            {
+                case 0:
+                    new AddRegInBd(Name.Text);
+                    break;
+                case 1:
+                    if (Reg.SelectedIndex > 0)
+                    {
+                        new AddLocInBd(Name.Text, (uint)Reg.SelectedIndex);
+                    }
+                    else
+                    {
+                        MessegeBox.Text = "Оберіть існуючий регіон";
+                    }
+                    break;
+                case 2:
+                    if (Reg.SelectedIndex > 0 && Loc.SelectedIndex >= 0)
+                    {
+                        new AddDisInBd(Name.Text, receiveLoc.LocalityList[Loc.SelectedIndex].LocalityId);
+                    }
+                    else
+                    {
+                        MessegeBox.Text = "Оберіть існуючий регіон і населений пункт";
+                    }
+                    break;
+            }
         }
 
         private void Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch (Type.SelectedIndex)
+            ReceiveRegions recevedReg = new ReceiveRegions(0);
+            //receved.
+            if (Type.SelectedIndex == 0)
             {
-                case 0:
+                Reg.Items.Clear();
+                Loc.Items.Clear();
+            }
+            else
+            {
+                Reg.Items.Clear();
+                Loc.Items.Clear();
+                //Reg.Items.Add();
+                Reg.Items.Add("Оберіть значення");
+                foreach (var regs in recevedReg.regionList)
+                {
+                    //Reg.Items.Add((int) regs.RegionId);
 
-                    break;
-                case 1:
-                    ReceiveRegions receved = new ReceiveRegions(1);
-                    foreach (var regs in receved.regionList)
-                    {
-                        Reg.Items.Insert((int)regs.RegionId, regs.Name);
-                    }
-                    break;
-                case 2:
-                    break;
+                    Reg.Items.Insert((int) regs.RegionId, regs.Name);
+                }
+
+                /*Reg.Items.Clear();
+                Loc.Items.Clear();
+                Reg.Items.Add("Оберіть значення");
+                foreach (var regs in recevedReg.regionList)
+                {
+                    Reg.Items.Insert((int) regs.RegionId, regs.Name);
+                    //Reg.Items.Insert((int)regs.RegionId, regs.Name);
+                }*/
             }
         }
+        
 
         private void Loc_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -62,7 +103,25 @@ namespace PopulationApp.WindowOfCommonFeatures
 
         private void Region_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
 
+            if (Type.SelectedIndex == 2 && Reg.SelectedIndex > 0)
+            {
+                receiveLoc = new ReceiveLocalitys((uint)Reg.SelectedIndex);
+                Loc.Items.Clear();
+                
+                //Loc.Items.Add("Оберіть значення");
+                
+                
+                foreach (var locs in receiveLoc.LocalityList)
+                {
+                    Loc.Items.Add(locs.Name);
+                }
+            }
+            else
+            {
+                Loc.Items.Clear();
+            }
         }
     }
 }
