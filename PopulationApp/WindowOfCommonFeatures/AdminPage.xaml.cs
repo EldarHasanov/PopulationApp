@@ -28,6 +28,20 @@ namespace PopulationApp.WindowOfCommonFeatures
             InitializeComponent();
             AAA.Text = "Ви авторизувалися як: " + thisUser.GetName();
             newUser = new User();
+
+            SearchRegionByName sercher = new SearchRegionByName("AAA");
+            AAA.Text = sercher.serchedRegions[0].RegionId + " ; " + sercher.serchedRegions[0].Name + " ; " + sercher.serchedRegions[0].Population;
+
+            ReceiveRegions receive = new ReceiveRegions(0);
+
+            for (int i = 0; i < receive.regionList.Count; i++)
+            {
+                AAA.Text += receive.regionList[i].RegionId + receive.regionList[i].Name +
+                            receive.regionList[i].Population;
+            }
+
+
+
         }
         private void SingUpButton_Click(object sender, RoutedEventArgs e)
         {

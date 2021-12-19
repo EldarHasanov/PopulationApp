@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -53,6 +54,11 @@ namespace DAL
             this.AverageAge = 40.3;
             this.AverageEducation = 2;
             this.AverageEducationPer = 54;
+        }
+
+        public Region GetRegion()
+        {
+            return this;
         }
 
 
