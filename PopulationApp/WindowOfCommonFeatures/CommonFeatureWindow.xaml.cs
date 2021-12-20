@@ -40,7 +40,7 @@ namespace PopulationApp.WindowOfCommonFeatures
             }
             else
             {
-                
+                Main.Content = new IntervewPage(ThisUser);
             }
         }
 

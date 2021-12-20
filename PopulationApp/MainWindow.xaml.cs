@@ -73,7 +73,9 @@ namespace PopulationApp
                     }
                     else
                     {
-
+                        CommonFeatureWindow commonFeatureWindow = new CommonFeatureWindow(autentification);
+                        this.Close();
+                        commonFeatureWindow.Show();
                     }
                 }
                 catch (AutentificationExeption exception)

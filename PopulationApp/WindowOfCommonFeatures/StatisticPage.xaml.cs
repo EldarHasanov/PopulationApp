@@ -35,6 +35,7 @@ namespace PopulationApp.WindowOfCommonFeatures
         }
         private void Button_Click_SeeStatistic(object sender, RoutedEventArgs e)
         {
+            Statistic.Content = new ShowStatisticPage(ThisUser);
             //Statistic.Content = new ChangePasswordPage(ThisUser);
         }
     }
