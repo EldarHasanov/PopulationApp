@@ -100,14 +100,18 @@ namespace PopulationApp.WindowOfCommonFeatures
             {
                 UpdateDistrict update = new UpdateDistrict(recevedReg.regionList[Reg.SelectedIndex],
                     receiveLoc.LocalityList[Loc.SelectedIndex], reciveDis.districtList[Dis.SelectedIndex]);
-                if ((bool)EducetedC.IsChecked)
+                if ((bool)EducetedC.IsChecked && Educ.SelectedIndex >= 0)
                 {
                     //update.DoUpdate((bool)ManC.IsChecked, Content.ToDouble Age.Text,);
-                    update.DoUpdate((bool)ManC.IsChecked, 12,false,false,1);
+                    update.DoUpdate((bool)ManC.IsChecked, Convert.ToDouble(Age.Text), (bool)SkoolC.IsChecked, true, (Educ.SelectedIndex + 1));
+                }
+                else if (!(bool)EducetedC.IsChecked)
+                {
+                    update.DoUpdate((bool)ManC.IsChecked, Convert.ToDouble(Age.Text), (bool)SkoolC.IsChecked, false);
                 }
                 else
                 {
-                    update.DoUpdate((bool)ManC.IsChecked, 12, false, false);
+
                 }
             }
         }

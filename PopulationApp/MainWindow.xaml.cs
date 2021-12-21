@@ -51,10 +51,10 @@ namespace PopulationApp
 
         private void SingInButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Login.Text != "Login" && Password.Text != "Password")
+            if (Login.Text != "Login" && Password.Password != "Password")
             {
                 string login = Login.Text;
-                string password = Password.Text;
+                string password = Password.Password;
                 User thisUser = new User(login, password);
                 try
                 {

@@ -9,16 +9,17 @@
       Title="IntervewPage">
 
     <Grid>
-        <Button Content="Переглянути" HorizontalAlignment="Left" Margin="350,360,0,0" VerticalAlignment="Top" FontSize="20" Width="400" IsDefault="True" Click="AddButton_Click"/>
+        <Button Content="Додати анкету" HorizontalAlignment="Left" Margin="350,360,0,0" VerticalAlignment="Top" FontSize="20" Width="400" IsDefault="True" Click="AddButton_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="100,75,0,0" Text="Population App" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Name="MessegeBox" Width="600" FontSize="35"/>
         <ComboBox HorizontalAlignment="Left" Margin="350,240,0,0" VerticalAlignment="Top" Width="400" FontSize="20" Name="Reg" SelectionChanged="Region_SelectionChanged"/>
         <ComboBox HorizontalAlignment="Left" Margin="350,320,0,0" VerticalAlignment="Top" Width="400" FontSize="20" Name="Dis" SelectionChanged="Type_SelectionChanged"/>
         <ComboBox HorizontalAlignment="Left" Margin="350,280,0,0" VerticalAlignment="Top" Width="400" FontSize="20" Name="Loc" SelectionChanged="Loc_SelectionChanged"/>
-        <CheckBox Content="Чоловік" HorizontalAlignment="Left" Margin="180,240,0,0" VerticalAlignment="Top" Name="ManC"/>
-        <CheckBox Content="Закінчив школу" HorizontalAlignment="Left" Margin="180,260,0,0" VerticalAlignment="Top" Name="SkoolC"/>
-        <CheckBox Content="Має вищу освіту" HorizontalAlignment="Left" Margin="180,280,0,0" VerticalAlignment="Top" Name="EducetedC"/>
-        <TextBox HorizontalAlignment="Left" Margin="180,300,0,0" Text="Вік" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="Age"/>
-        <ComboBox HorizontalAlignment="Left" Margin="180,322,0,0" VerticalAlignment="Top" Width="100" FontSize="10" x:Name="Educ"/>
+        <CheckBox Content="Закінчив школу" HorizontalAlignment="Left" Margin="229,265,0,0" VerticalAlignment="Top" Name="SkoolC"/>
+        <CheckBox Content="Має вищу освіту" HorizontalAlignment="Left" Margin="229,285,0,0" VerticalAlignment="Top" Name="EducetedC"/>
+        <TextBox HorizontalAlignment="Left" Margin="229,329,0,0" Text="Вік" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Name="Age"/>
+        <ComboBox HorizontalAlignment="Left" Margin="229,305,0,0" VerticalAlignment="Top" Width="100" FontSize="10" x:Name="Educ"/>
+        <RadioButton Content="Чоловік" HorizontalAlignment="Left" Margin="229,228,0,0" VerticalAlignment="Top" Name="ManC" GroupName="MW"/>
+        <RadioButton Content="Жінка" HorizontalAlignment="Left" Margin="229,245,0,0" VerticalAlignment="Top" GroupName="MW"/>
 
     </Grid>
 </Page>

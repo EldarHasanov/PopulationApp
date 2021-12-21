@@ -32,16 +32,16 @@ namespace PopulationApp.WindowOfCommonFeatures
         private void SingUpButton_Click(object sender, RoutedEventArgs e)
         {
             
-            if (OldPass1.Text == OldPass2.Text && OldPass1.Text != NewPass.Text)
+            if (OldPass1.Password == OldPass2.Password && OldPass1.Password != NewPass.Password)
             {
                 MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Ви збираєтесь змінита пароль користувачу: " + ThisUser.GetName() + " Ви впевнені?", "Зміна паролю", 
                     System.Windows.MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.Yes)
                 {
-                    ChangePassword changePassword = new ChangePassword(ThisUser, NewPass.Text);
+                    ChangePassword changePassword = new ChangePassword(ThisUser, NewPass.Password);
                     try
                     {
-                        ThisUser = changePassword.Change(OldPass1.Text);
+                        ThisUser = changePassword.Change(OldPass1.Password);
                         MessageText.Text = "Пароль успішно змінено!";
                     }
                     catch (ChangePasswordException exception) 
@@ -52,7 +52,7 @@ namespace PopulationApp.WindowOfCommonFeatures
                     
 
             }
-            else if (OldPass1.Text != OldPass2.Text)
+            else if (OldPass1.Password != OldPass2.Password)
             {
                 MessageText.Text = "Старі паролі не співпадають.";
             }
