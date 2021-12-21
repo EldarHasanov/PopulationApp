@@ -7,7 +7,7 @@ using DAL;
 
 namespace ViewModel
 {
-    public class ReceiveRegions
+    public class ReceiveRegions : ReciveInterface<Region>
     {
         public List<Region> regionList { get; set; }
 
@@ -19,20 +19,13 @@ namespace ViewModel
                     from ord in db.regions
                     where ord.RegionId >= (page) * 100 + 1 && ord.RegionId <= (page + 1) * 100 + 1
                     select ord;
-
-                // Execute the query, and change the column values
-                // you want to change.
-                //serchedRegions.AddRange(query);
-
                 regionList= query.ToList();
-                /*foreach (Region ord in query)
-                {
-                    serchedRegions.AddRange(query);
-                    // Insert any additional changes to column values.
-                }*/
-
-                //db.SaveChanges();
             }
+        }
+
+        public List<Region> Recive()
+        {
+            return regionList;
         }
     }
 }

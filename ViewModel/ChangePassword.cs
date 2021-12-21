@@ -14,6 +14,8 @@ namespace ViewModel
         private Autentification Auten;
         private string NewPassword;
 
+        private UserCaretaker userCaretr = new UserCaretaker();
+
         public ChangePassword(Autentification autentification, String newPassword)
         {
             Auten = autentification;
@@ -22,6 +24,8 @@ namespace ViewModel
 
         public Autentification Change(string oldPassword)
         {
+            userCaretr.History.Push(Auten.SaveMemento());
+
             Hash encr = new Hash();
             int hash = encr.GetFNV1aHashCode(oldPassword);
             if (Auten.GetPassword() == hash.ToString())
@@ -34,12 +38,9 @@ namespace ViewModel
                         where ord.Email == Auten.GetEmail()
                         select ord;
 
-                    // Execute the query, and change the column values
-                    // you want to change.
                     foreach (User ord in query)
                     {
                         ord.Password = hash.ToString();
-                        // Insert any additional changes to column values.
                     }
 
                     db.SaveChanges();
@@ -51,9 +52,12 @@ namespace ViewModel
             }
             else
             {
+                Auten.RestoreMomento(userCaretr.History.Pop());
                 throw new ChangePasswordException("Sommthing wrong with new password");
                 return Auten;
             }
         }
     }
+
+    
 }

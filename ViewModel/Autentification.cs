@@ -12,7 +12,7 @@ using PopulationApp;
 
 namespace ViewModel
 {
-    public class Autentification
+    public class Autentification // хранитель
     {
         private User AutentificatedUser;
         private uint accessLevel;
@@ -42,6 +42,18 @@ namespace ViewModel
                 //AAA.Text = thisUser.ToString();
             }
         }
+
+        public UserMemento SaveMemento()
+        {
+            return new UserMemento(this);
+        }
+
+        public void RestoreMomento(UserMemento user)
+        {
+            this.Name = user.autentification.Name;
+            this.accessLevel = user.autentification.accessLevel;
+            this.AutentificatedUser = user.autentification.AutentificatedUser;
+        }
         public uint GetAccessLevel()
         {
             return accessLevel;
@@ -64,6 +76,26 @@ namespace ViewModel
         public User GetUser()
         {
             return AutentificatedUser;
+        }
+    }
+
+    public class UserMemento
+    {
+        public Autentification autentification { get; }
+
+        public UserMemento(Autentification auten)
+        {
+            autentification = auten;
+        }
+
+    }
+
+    public class UserCaretaker
+    {
+        public Stack<UserMemento> History { get; private set; }
+        public UserCaretaker()
+        {
+            History = new Stack<UserMemento>();
         }
     }
 }

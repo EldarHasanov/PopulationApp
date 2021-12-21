@@ -8,7 +8,7 @@ using DAL.Entity;
 
 namespace ViewModel
 {
-    public class UpdateDistrict
+    public class UpdateDistrict   //Фасад
     {
         private District ThisDistrict;
         private Region ThisRegion;
@@ -26,29 +26,6 @@ namespace ViewModel
 
         public void DoUpdate(bool man, double age, bool finishSecond, bool finishProf, int EdType = 1)
         {
-            /*using (DBContext db = new DBContext())
-            {
-                var distQuery =
-                    from dist in db.districts
-                    where dist.DistrictId == ThisDistrict.DistrictId
-                    select dist;
-
-                var locQuery =
-                    from loc in db.localitys
-                    where loc.LocalityId == ThisLocality.LocalityId
-                    select loc;
-
-                var regQuery =
-                    from reg in db.regions
-                    where reg.RegionId == ThisRegion.RegionId
-                    select reg;
-
-                db
-
-
-                db.districts.;
-                db.localitys.Update(ThisLocality);
-                db.reg*/
 
             double temp = (((ThisDistrict.AverageAge * ThisDistrict.Population) + age) / (ThisDistrict.Population + 1));
             ThisDistrict.AverageAge = temp;
@@ -134,15 +111,6 @@ namespace ViewModel
                     }
                 }
             }
-
-            /*if (finishProf)
-            {
-                if (ThisDistrict)
-                {
-                    
-                }
-                temp = (ThisDistrict.FinishedProfileEducation * (ThisDistrict.AverageEducationPer / 100));
-            }*/
 
             ThisDistrict.Population++;
             ThisLocality.Population++;

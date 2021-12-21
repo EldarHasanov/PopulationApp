@@ -35,9 +35,8 @@ namespace PopulationApp.WindowOfCommonFeatures
             Educ.Items.Add("Технічна");
             Educ.Items.Add("Гуманітарна");
 
-            foreach (var regs in recevedReg.regionList)
+            foreach (var regs in recevedReg.regionList) // Ітератор
             {
-                //Reg.Items.Add((int) regs.RegionId);
 
                 Reg.Items.Add(regs.Name);
             }

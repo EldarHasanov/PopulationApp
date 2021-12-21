@@ -8,7 +8,7 @@ using DAL.Entity;
 
 namespace ViewModel
 {
-    public class ReciveDistrict
+    public class ReciveDistrict : ReciveInterface<District>
     {
         public List<District> districtList { get; set; }
 
@@ -21,19 +21,13 @@ namespace ViewModel
                     where ord.Locality == LocId
                     select ord;
 
-                // Execute the query, and change the column values
-                // you want to change.
-                //serchedLocalitys.AddRange(query);
-
                 districtList = query.ToList();
-                /*foreach (Locality ord in query)
-                {
-                    serchedLocalitys.AddRange(query);
-                    // Insert any additional changes to column values.
-                }*/
-
-                //db.SaveChanges();
             }
+        }
+
+        public List<District> Recive()
+        {
+            return districtList;
         }
     }
 }

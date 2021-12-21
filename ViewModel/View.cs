@@ -8,7 +8,7 @@ using DAL.Entity;
 
 namespace ViewModel
 {
-    public class View
+    public class View   //Адаптер
     {
         public uint Id { get; set; }
         public string Name { get; set; }
