@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DAL;
 using DAL.Entity;
+using ViewModel;
 
 namespace PopulationApp.WindowOfCommonFeatures
 {
@@ -21,20 +22,37 @@ namespace PopulationApp.WindowOfCommonFeatures
     /// </summary>
     public partial class StatisticWindow : Window
     {
+        private List<View> viewForTable = new List<View>();
+
         public StatisticWindow(List<Region> regions)
         {
             InitializeComponent();
-            MainData.ItemsSource = regions;
+            foreach (var reg in regions)
+            {
+                viewForTable.Add(new View(reg));
+            }
+
+            MainData.ItemsSource = viewForTable;
+            
         }
         public StatisticWindow(List<Locality> localities)
         {
             InitializeComponent();
-            MainData.ItemsSource = localities;
+            foreach (var loc in localities)
+            {
+                viewForTable.Add(new View(loc));
+            }
+            MainData.ItemsSource = viewForTable;
         }
         public StatisticWindow(List<District> districts)
         {
             InitializeComponent();
-            MainData.ItemsSource = districts;
+            foreach (var dis in districts)
+            {
+
+                viewForTable.Add(new View(dis));
+            }
+            MainData.ItemsSource = viewForTable;
         }
     }
 }

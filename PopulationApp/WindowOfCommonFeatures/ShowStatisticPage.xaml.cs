@@ -70,9 +70,10 @@ namespace PopulationApp.WindowOfCommonFeatures
 
         private void Loc_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            reciveDis = new ReciveDistrict(receiveLoc.LocalityList[Loc.SelectedIndex].LocalityId);
+           
             if (Type.SelectedIndex >= 2 && Reg.SelectedIndex >= 0 && Loc.SelectedIndex >= 0)
             {
+                //reciveDis = new ReciveDistrict(receiveLoc.LocalityList[Loc.SelectedIndex].LocalityId);
                 reciveDis = new ReciveDistrict(receiveLoc.LocalityList[Loc.SelectedIndex].LocalityId);
                 //Dis.Items.Clear();
 

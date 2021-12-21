@@ -100,18 +100,21 @@ namespace PopulationApp.WindowOfCommonFeatures
             {
                 UpdateDistrict update = new UpdateDistrict(recevedReg.regionList[Reg.SelectedIndex],
                     receiveLoc.LocalityList[Loc.SelectedIndex], reciveDis.districtList[Dis.SelectedIndex]);
-                if ((bool)EducetedC.IsChecked && Educ.SelectedIndex >= 0)
+                var isNumeric = double.TryParse(Age.Text, out double realAge);
+                if ((bool)EducetedC.IsChecked && Educ.SelectedIndex >= 0 && isNumeric)
                 {
                     //update.DoUpdate((bool)ManC.IsChecked, Content.ToDouble Age.Text,);
-                    update.DoUpdate((bool)ManC.IsChecked, Convert.ToDouble(Age.Text), (bool)SkoolC.IsChecked, true, (Educ.SelectedIndex + 1));
+                    update.DoUpdate((bool)ManC.IsChecked, realAge, (bool)SkoolC.IsChecked, true, (Educ.SelectedIndex + 1));
+                    MessegeBox.Text = "Данні введено";
                 }
-                else if (!(bool)EducetedC.IsChecked)
+                else if (!(bool)EducetedC.IsChecked && isNumeric)
                 {
-                    update.DoUpdate((bool)ManC.IsChecked, Convert.ToDouble(Age.Text), (bool)SkoolC.IsChecked, false);
+                    update.DoUpdate((bool)ManC.IsChecked, realAge, (bool)SkoolC.IsChecked, false);
+                    MessegeBox.Text = "Данні введено";
                 }
                 else
                 {
-
+                    MessegeBox.Text = "Введіть коректні данні";
                 }
             }
         }
